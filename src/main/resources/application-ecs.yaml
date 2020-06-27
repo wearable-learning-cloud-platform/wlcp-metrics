@@ -1,0 +1,19 @@
+spring:
+  application:
+    name: wlcp-metrics
+  datasource:
+    url: ${DB_URL}
+    username: ${DB_USER}
+    password: ${DB_PASSWORD}
+  jpa:
+    database-platform: org.hibernate.dialect.MySQL5InnoDBDialect
+    hibernate:
+      ddl-auto: create
+server:
+   port: 8084
+eureka:
+   client:
+    serviceUrl:
+      defaultZone: http://wlcp-discovery.local:8761/eureka/
+   instance:    prefer-ip-address: true
+    ip-address: ${ECS_INSTANCE_IP_ADDRESS}

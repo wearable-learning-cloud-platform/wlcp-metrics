@@ -1,0 +1,17 @@
+spring:
+  application:
+    name: wlcp-metrics
+  datasource:
+    url: jdbc:mysql://wlcp-api-db:3306/wlcp-metrics
+    username: wlcp
+    password: wlcp
+  jpa:
+    database-platform: org.hibernate.dialect.MySQL5InnoDBDialect
+    hibernate:
+      ddl-auto: create
+server:
+  port: 8084
+eureka:
+  client:
+    serviceUrl:
+      defaultZone: http://wlcp-discovery:8761/eureka/

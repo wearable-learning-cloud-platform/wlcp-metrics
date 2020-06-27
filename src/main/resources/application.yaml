@@ -1,0 +1,20 @@
+spring:
+  application:
+    name: wlcp-metrics
+  datasource:
+    url: jdbc:mysql://localhost:3306/wlcp-metrics
+    username: wlcp
+    password: wlcp
+  jpa:
+    database-platform: org.hibernate.dialect.MySQL5InnoDBDialect
+    hibernate:
+      ddl-auto: create
+server:
+  port: 8084
+eureka:
+  client:
+    serviceUrl:
+      defaultZone: http://localhost:8761/eureka/
+  instance:
+    prefer-ip-address: true
+    hostname: docker-host
