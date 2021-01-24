@@ -15,14 +15,21 @@ public class LogEventState extends LogEvent {
 	@Column
 	private String componentProperties;
 	
+	@Column
+	private String stateEvent;
+	
+
 	public LogEventState() {
 		super(LogEventType.STATE);
 	}
 
-	public LogEventState(String componentProperties) {
-		this();
+	public LogEventState(String componentProperties, String stateEvent) {
+		//this();
+		super(LogEventType.STATE);
 		this.componentProperties = componentProperties;
+		this.stateEvent = stateEvent;
 	}
+	
 
 	public String getComponentProperties() {
 		return componentProperties;
@@ -30,6 +37,14 @@ public class LogEventState extends LogEvent {
 
 	public void setComponentProperties(String componentProperties) {
 		this.componentProperties = componentProperties;
+	}
+	
+	public String getStateEvent() {
+		return stateEvent;
+	}
+
+	public void setStateEvent(String stateEvent) {
+		this.stateEvent = stateEvent;
 	}
 	
 }
