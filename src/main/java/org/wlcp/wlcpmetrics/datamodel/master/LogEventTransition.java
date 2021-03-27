@@ -22,6 +22,9 @@ public class LogEventTransition extends LogEvent {
 	@Column
 	@Lob
 	private String transitionProperties;
+	
+	@Column
+	private String transitionConnection;
 
 	@Column
 	private String transitionEvent;
@@ -33,11 +36,18 @@ public class LogEventTransition extends LogEvent {
 		super(LogEventType.TRANSITION);
 	}
 	
-	public LogEventTransition(String transitionId, String transitionProperties, String transitionEvent) {
+	public LogEventTransition(
+			String transitionId, 
+			String transitionProperties, 
+			String transitionConnection, 
+			String transitionEvent
+		) {
+		
 		super(LogEventType.TRANSITION);
 		
 		this.transitionId = transitionId;
 		this.transitionProperties = transitionProperties;
+		this.transitionConnection = transitionConnection;
 		this.transitionEvent = transitionEvent;
 	}
 	
@@ -58,6 +68,14 @@ public class LogEventTransition extends LogEvent {
 
 	public void setTransitionProperties(String transitionProperties) {
 		this.transitionProperties = transitionProperties;
+	}
+	
+	public String getTransitionConnection() {
+		return transitionConnection;
+	}
+
+	public void setTransitionConnection(String transitionConnection) {
+		this.transitionConnection = transitionConnection;
 	}
 	
 	public String getTransitionEvent() {
