@@ -1,3 +1,5 @@
 spring:
   application:
     name: wlcp-metrics
+  liquibase:
+    enabled: false
