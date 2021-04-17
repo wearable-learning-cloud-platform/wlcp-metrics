@@ -5,10 +5,13 @@ spring:
     url: jdbc:mysql://localhost:3306/wlcp-metrics
     username: wlcp
     password: wlcp
+  liquibase:
+    change-log: classpath:liquibase/changelogs/liquibase-parent-changelog.xml
+    default-schema: wlcp-metrics
   jpa:
     database-platform: org.hibernate.dialect.MySQL5InnoDBDialect
     hibernate:
-      ddl-auto: create
+      ddl-auto: none
 server:
   port: 8084
 eureka:
