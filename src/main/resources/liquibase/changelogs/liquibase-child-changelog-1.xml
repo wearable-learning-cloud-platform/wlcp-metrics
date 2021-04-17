@@ -1,0 +1,76 @@
+<?xml version="1.1" encoding="UTF-8" standalone="no"?>
+<databaseChangeLog xmlns="http://www.liquibase.org/xml/ns/dbchangelog" xmlns:ext="http://www.liquibase.org/xml/ns/dbchangelog-ext" xmlns:pro="http://www.liquibase.org/xml/ns/pro" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog-ext http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-ext.xsd http://www.liquibase.org/xml/ns/pro http://www.liquibase.org/xml/ns/pro/liquibase-pro-3.8.xsd http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.8.xsd">
+    <changeSet author="Matt (generated)" id="1618689289032-1">
+        <createTable tableName="log_event">
+            <column autoIncrement="true" name="log_event_id" type="INT">
+                <constraints nullable="false" primaryKey="true"/>
+            </column>
+            <column name="game_id" type="VARCHAR(255)"/>
+            <column name="game_instance_id" type="VARCHAR(255)"/>
+            <column name="log_context" type="INT"/>
+            <column name="log_event_type" type="INT"/>
+            <column name="time_stamp" type="datetime"/>
+            <column name="username_id" type="VARCHAR(255)"/>
+        </createTable>
+    </changeSet>
+    <changeSet author="Matt (generated)" id="1618689289032-2">
+        <createTable tableName="log_event_button_press">
+            <column name="button_pressed" type="VARCHAR(255)"/>
+            <column name="log_event_id" type="INT">
+                <constraints nullable="false" primaryKey="true"/>
+            </column>
+        </createTable>
+    </changeSet>
+    <changeSet author="Matt (generated)" id="1618689289032-3">
+        <createTable tableName="log_event_connection">
+            <column name="connection_event" type="VARCHAR(255)"/>
+            <column name="connection_from" type="VARCHAR(255)"/>
+            <column name="connection_id" type="VARCHAR(255)"/>
+            <column name="connection_to" type="VARCHAR(255)"/>
+            <column name="connection_transition" type="VARCHAR(255)"/>
+            <column name="log_event_id" type="INT">
+                <constraints nullable="false" primaryKey="true"/>
+            </column>
+        </createTable>
+    </changeSet>
+    <changeSet author="Matt (generated)" id="1618689289032-4">
+        <createTable tableName="log_event_state">
+            <column name="component_properties" type="LONGTEXT"/>
+            <column name="state_event" type="VARCHAR(255)"/>
+            <column name="state_id" type="VARCHAR(255)"/>
+            <column name="log_event_id" type="INT">
+                <constraints nullable="false" primaryKey="true"/>
+            </column>
+        </createTable>
+    </changeSet>
+    <changeSet author="Matt (generated)" id="1618689289032-5">
+        <createTable tableName="log_event_transition">
+            <column name="transition_connection" type="VARCHAR(255)"/>
+            <column name="transition_event" type="VARCHAR(255)"/>
+            <column name="transition_id" type="VARCHAR(255)"/>
+            <column name="transition_properties" type="LONGTEXT"/>
+            <column name="log_event_id" type="INT">
+                <constraints nullable="false" primaryKey="true"/>
+            </column>
+        </createTable>
+    </changeSet>
+    <changeSet author="Matt (generated)" id="1618689289032-6">
+        <createTable tableName="test">
+            <column name="test_id" type="VARCHAR(255)">
+                <constraints nullable="false" primaryKey="true"/>
+            </column>
+        </createTable>
+    </changeSet>
+    <changeSet author="Matt (generated)" id="1618689289032-7">
+        <addForeignKeyConstraint baseColumnNames="log_event_id" baseTableName="log_event_button_press" constraintName="FK3wx5gvrqu6jwyrlqsnu190uq6" deferrable="false" initiallyDeferred="false" onDelete="RESTRICT" onUpdate="RESTRICT" referencedColumnNames="log_event_id" referencedTableName="log_event" validate="true"/>
+    </changeSet>
+    <changeSet author="Matt (generated)" id="1618689289032-8">
+        <addForeignKeyConstraint baseColumnNames="log_event_id" baseTableName="log_event_connection" constraintName="FKh6yqflwxv8ks3uj35fnu8witq" deferrable="false" initiallyDeferred="false" onDelete="RESTRICT" onUpdate="RESTRICT" referencedColumnNames="log_event_id" referencedTableName="log_event" validate="true"/>
+    </changeSet>
+    <changeSet author="Matt (generated)" id="1618689289032-9">
+        <addForeignKeyConstraint baseColumnNames="log_event_id" baseTableName="log_event_state" constraintName="FKrsg8010i4e4tpk6x2p7b43k89" deferrable="false" initiallyDeferred="false" onDelete="RESTRICT" onUpdate="RESTRICT" referencedColumnNames="log_event_id" referencedTableName="log_event" validate="true"/>
+    </changeSet>
+    <changeSet author="Matt (generated)" id="1618689289032-10">
+        <addForeignKeyConstraint baseColumnNames="log_event_id" baseTableName="log_event_transition" constraintName="FKtkhj34xsnb2lo50hbp78o45uk" deferrable="false" initiallyDeferred="false" onDelete="RESTRICT" onUpdate="RESTRICT" referencedColumnNames="log_event_id" referencedTableName="log_event" validate="true"/>
+    </changeSet>
+</databaseChangeLog>

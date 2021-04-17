@@ -24,7 +24,12 @@ import com.fasterxml.jackson.annotation.JsonTypeInfo;
 @Table
 @Inheritance(strategy = InheritanceType.JOINED)
 @JsonTypeInfo(use = JsonTypeInfo.Id.NAME, include = JsonTypeInfo.As.PROPERTY, property="logEventType", defaultImpl=LogEvent.class)
-@JsonSubTypes({@Type(value = LogEventButtonPress.class, name="BUTTON_PRESS"), @Type(value = LogEventState.class, name="STATE")})
+@JsonSubTypes({
+	@Type(value = LogEventButtonPress.class, name="BUTTON_PRESS"), 
+	@Type(value = LogEventState.class, name="STATE"), 
+	@Type(value = LogEventConnection.class, name="CONNECTION"), 
+	@Type(value = LogEventTransition.class, name="TRANSITION")
+})
 public abstract class LogEvent {
 	
 	@Id()
@@ -51,6 +56,7 @@ public abstract class LogEvent {
 	
 	@Column
 	private Timestamp timeStamp;
+	
 	
 	public LogEvent(LogEventType logEventType) {
 		this.logEventType = logEventType;
