@@ -7,7 +7,7 @@ spring:
     password: ${DB_PASSWORD}
   liquibase:
     change-log: classpath:liquibase/changelogs/liquibase-parent-changelog.xml
-    default-schema: wlcp-metrics
+    default-schema: ${DB_SCHEMA}
   jpa:
     database-platform: org.hibernate.dialect.MySQL5InnoDBDialect
     hibernate:
