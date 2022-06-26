@@ -1,0 +1,20 @@
+spring:
+  application:
+    name: wlcp-metrics
+  datasource:
+    url: jdbc:mysql://wlcp-db-dev:3306/wlcp-metrics
+    username: wlcp
+    password: wlcp
+  liquibase:
+    change-log: classpath:liquibase/changelogs/liquibase-parent-changelog.xml
+    default-schema: wlcp-metrics
+  jpa:
+    database-platform: org.hibernate.dialect.MySQL5InnoDBDialect
+    hibernate:
+      ddl-auto: none
+server:
+  port: 8084
+eureka:
+  client:
+    serviceUrl:
+      defaultZone: http://wlcp-discovery-dev:8761/eureka/
