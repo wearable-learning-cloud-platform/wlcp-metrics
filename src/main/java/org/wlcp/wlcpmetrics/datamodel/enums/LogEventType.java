@@ -5,6 +5,7 @@ public enum LogEventType {
 	BUTTON_PRESS,
 	STATE,
 	CONNECTION,
-	TRANSITION
+	TRANSITION,
+	START_STATE
 
 }
