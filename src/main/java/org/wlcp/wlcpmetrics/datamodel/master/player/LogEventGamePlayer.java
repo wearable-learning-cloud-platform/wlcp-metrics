@@ -30,6 +30,7 @@ import com.fasterxml.jackson.annotation.JsonTypeInfo;
 @JsonSubTypes({
 	@Type(value = LogEventGamePlayerClientMessage.class, name="CLIENT_MESSAGE"), 
 	@Type(value = LogEventGamePlayerServerMessage.class, name="SERVER_MESSAGE"),
+	@Type(value = LogEventGamePlayerServerEvent.class, name="SERVER_EVENT"),
 	@Type(value = LogEventGamePlayerCommunication.class, name="COMMUNICATION")
 })
 public abstract class LogEventGamePlayer {
