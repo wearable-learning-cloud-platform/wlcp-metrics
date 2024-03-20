@@ -26,6 +26,7 @@ import com.fasterxml.jackson.annotation.JsonTypeInfo;
 @JsonTypeInfo(use = JsonTypeInfo.Id.NAME, include = JsonTypeInfo.As.PROPERTY, property="logEventType", defaultImpl=LogEvent.class)
 @JsonSubTypes({
 	@Type(value = LogEventButtonPress.class, name="BUTTON_PRESS"), 
+	@Type(value = LogEventButtonPress.class, name="START_STATE"), 
 	@Type(value = LogEventState.class, name="STATE"), 
 	@Type(value = LogEventConnection.class, name="CONNECTION"), 
 	@Type(value = LogEventTransition.class, name="TRANSITION")
