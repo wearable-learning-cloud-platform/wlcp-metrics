@@ -9,7 +9,6 @@ spring:
     change-log: classpath:liquibase/changelogs/liquibase-parent-changelog.xml
     default-schema: ${DB_SCHEMA}
   jpa:
-    database-platform: org.hibernate.dialect.MySQL5InnoDBDialect
     hibernate:
       ddl-auto: none
 server:
@@ -18,5 +17,6 @@ eureka:
    client:
     serviceUrl:
       defaultZone: ${EUREKA_DEFAULT_ZONE}
-   instance:    prefer-ip-address: true
+   instance:
+    prefer-ip-address: true
     ip-address: ${ECS_INSTANCE_IP_ADDRESS}
