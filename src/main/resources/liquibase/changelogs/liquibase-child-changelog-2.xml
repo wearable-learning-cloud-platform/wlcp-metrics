@@ -1,0 +1,175 @@
+<?xml version="1.1" encoding="UTF-8" standalone="no"?>
+<databaseChangeLog xmlns="http://www.liquibase.org/xml/ns/dbchangelog" xmlns:ext="http://www.liquibase.org/xml/ns/dbchangelog-ext" xmlns:pro="http://www.liquibase.org/xml/ns/pro" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog-ext http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-ext.xsd http://www.liquibase.org/xml/ns/pro http://www.liquibase.org/xml/ns/pro/liquibase-pro-3.8.xsd http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.8.xsd">
+    <changeSet author="Matt (generated)" id="1693252771040-1">
+        <createTable tableName="log_event_game_instance">
+            <column autoIncrement="true" name="log_event_game_instance_id" type="INT">
+                <constraints nullable="false" primaryKey="true"/>
+            </column>
+            <column name="debug_instance" type="BIT(1)"/>
+            <column name="duration" type="BIGINT"/>
+            <column name="end" type="datetime"/>
+            <column name="game_ended" type="BIT(1)"/>
+            <column name="game_id" type="VARCHAR(255)"/>
+            <column name="start" type="datetime"/>
+            <column name="username_id" type="VARCHAR(255)"/>
+        </createTable>
+    </changeSet>
+    <changeSet author="Matt (generated)" id="1693252771040-2">
+        <createTable tableName="log_event_game_instance_client_messages">
+            <column name="log_event_game_instance_id" type="INT">
+                <constraints nullable="false"/>
+            </column>
+            <column name="log_event_game_player_id" type="INT">
+                <constraints nullable="false" unique="true"/>
+            </column>
+        </createTable>
+    </changeSet>
+    <changeSet author="Matt (generated)" id="1693252771040-3">
+        <createTable tableName="log_event_game_instance_game_player_communication_events">
+            <column name="log_event_game_instance_id" type="INT">
+                <constraints nullable="false"/>
+            </column>
+            <column name="log_event_game_player_id" type="INT">
+                <constraints nullable="false" unique="true"/>
+            </column>
+        </createTable>
+    </changeSet>
+    <changeSet author="Matt (generated)" id="1693252771040-4">
+        <createTable tableName="log_event_game_instance_server_events">
+            <column name="log_event_game_instance_id" type="INT">
+                <constraints nullable="false"/>
+            </column>
+            <column name="log_event_game_player_id" type="INT">
+                <constraints nullable="false" unique="true"/>
+            </column>
+        </createTable>
+    </changeSet>
+    <changeSet author="Matt (generated)" id="1693252771040-5">
+        <createTable tableName="log_event_game_instance_server_messages">
+            <column name="log_event_game_instance_id" type="INT">
+                <constraints nullable="false"/>
+            </column>
+            <column name="log_event_game_player_id" type="INT">
+                <constraints nullable="false" unique="true"/>
+            </column>
+        </createTable>
+    </changeSet>
+    <changeSet author="Matt (generated)" id="1693252771040-6">
+        <createTable tableName="log_event_game_player">
+            <column autoIncrement="true" name="log_event_game_player_id" type="INT">
+                <constraints nullable="false" primaryKey="true"/>
+            </column>
+            <column name="log_event_game_player_type" type="VARCHAR(255)"/>
+            <column name="player" type="INT"/>
+            <column name="team" type="INT"/>
+            <column name="timestamp" type="datetime"/>
+            <column name="log_event_game_instance_id" type="INT"/>
+        </createTable>
+    </changeSet>
+    <changeSet author="Matt (generated)" id="1693252771040-7">
+        <createTable tableName="log_event_game_player_client_message">
+            <column name="log_event_game_player_client_type" type="VARCHAR(255)"/>
+            <column name="message" type="TEXT"/>
+            <column name="log_event_game_player_id" type="INT">
+                <constraints nullable="false" primaryKey="true"/>
+            </column>
+        </createTable>
+    </changeSet>
+    <changeSet author="Matt (generated)" id="1693252771040-8">
+        <createTable tableName="log_event_game_player_communication">
+            <column name="data" type="TEXT"/>
+            <column name="data_direction" type="VARCHAR(255)"/>
+            <column name="input" type="VARCHAR(255)"/>
+            <column name="output" type="VARCHAR(255)"/>
+            <column name="log_event_game_player_id" type="INT">
+                <constraints nullable="false" primaryKey="true"/>
+            </column>
+        </createTable>
+    </changeSet>
+    <changeSet author="Matt (generated)" id="1693252771040-9">
+        <createTable tableName="log_event_game_player_server_event">
+            <column name="event" type="VARCHAR(255)"/>
+            <column name="old_state" type="INT"/>
+            <column name="running" type="BIT(1)"/>
+            <column name="state" type="INT"/>
+            <column name="state_name" type="VARCHAR(255)"/>
+            <column name="type" type="VARCHAR(255)"/>
+            <column name="log_event_game_player_id" type="INT">
+                <constraints nullable="false" primaryKey="true"/>
+            </column>
+        </createTable>
+    </changeSet>
+    <changeSet author="Matt (generated)" id="1693252771040-10">
+        <createTable tableName="log_event_game_player_server_message">
+            <column name="log_event_game_player_server_type" type="VARCHAR(255)"/>
+            <column name="message" type="TEXT"/>
+            <column name="log_event_game_player_id" type="INT">
+                <constraints nullable="false" primaryKey="true"/>
+            </column>
+        </createTable>
+    </changeSet>
+    <changeSet author="Matt (generated)" id="1693252771040-11">
+        <createIndex indexName="FKd21q2ufglvcw72gs8yajic8p8" tableName="log_event_game_instance_server_events">
+            <column name="log_event_game_instance_id"/>
+        </createIndex>
+    </changeSet>
+    <changeSet author="Matt (generated)" id="1693252771040-12">
+        <createIndex indexName="FKfyksg34dhx1lwu8s2ytwrefqb" tableName="log_event_game_player">
+            <column name="log_event_game_instance_id"/>
+        </createIndex>
+    </changeSet>
+    <changeSet author="Matt (generated)" id="1693252771040-13">
+        <createIndex indexName="FKodidblpkbp49higospfuuygxq" tableName="log_event_game_instance_game_player_communication_events">
+            <column name="log_event_game_instance_id"/>
+        </createIndex>
+    </changeSet>
+    <changeSet author="Matt (generated)" id="1693252771040-14">
+        <createIndex indexName="FKoplutd3640d7dq7wb3y31vn6b" tableName="log_event_game_instance_server_messages">
+            <column name="log_event_game_instance_id"/>
+        </createIndex>
+    </changeSet>
+    <changeSet author="Matt (generated)" id="1693252771040-15">
+        <createIndex indexName="FKppcn1x5k2ni0pwkqhqmqamg6" tableName="log_event_game_instance_client_messages">
+            <column name="log_event_game_instance_id"/>
+        </createIndex>
+    </changeSet>
+    <changeSet author="Matt (generated)" id="1693252771040-16">
+        <addForeignKeyConstraint baseColumnNames="log_event_game_player_id" baseTableName="log_event_game_instance_client_messages" constraintName="FK63cmfj4fr3bh8p7x20o3ex63a" deferrable="false" initiallyDeferred="false" onDelete="RESTRICT" onUpdate="RESTRICT" referencedColumnNames="log_event_game_player_id" referencedTableName="log_event_game_player_client_message" validate="true"/>
+    </changeSet>
+    <changeSet author="Matt (generated)" id="1693252771040-17">
+        <addForeignKeyConstraint baseColumnNames="log_event_game_player_id" baseTableName="log_event_game_player_communication" constraintName="FK6aqx9tlyhch6fexglcy94bmg7" deferrable="false" initiallyDeferred="false" onDelete="RESTRICT" onUpdate="RESTRICT" referencedColumnNames="log_event_game_player_id" referencedTableName="log_event_game_player" validate="true"/>
+    </changeSet>
+    <changeSet author="Matt (generated)" id="1693252771040-18">
+        <addForeignKeyConstraint baseColumnNames="log_event_game_player_id" baseTableName="log_event_game_instance_server_events" constraintName="FK8d0poe3lhlh3qfh2n3p8k6wpf" deferrable="false" initiallyDeferred="false" onDelete="RESTRICT" onUpdate="RESTRICT" referencedColumnNames="log_event_game_player_id" referencedTableName="log_event_game_player_server_event" validate="true"/>
+    </changeSet>
+    <changeSet author="Matt (generated)" id="1693252771040-19">
+        <addForeignKeyConstraint baseColumnNames="log_event_game_player_id" baseTableName="log_event_game_player_server_message" constraintName="FKbggc5i05l1tynsjlcl2ef9j26" deferrable="false" initiallyDeferred="false" onDelete="RESTRICT" onUpdate="RESTRICT" referencedColumnNames="log_event_game_player_id" referencedTableName="log_event_game_player" validate="true"/>
+    </changeSet>
+    <changeSet author="Matt (generated)" id="1693252771040-20">
+        <addForeignKeyConstraint baseColumnNames="log_event_game_instance_id" baseTableName="log_event_game_instance_server_events" constraintName="FKd21q2ufglvcw72gs8yajic8p8" deferrable="false" initiallyDeferred="false" onDelete="RESTRICT" onUpdate="RESTRICT" referencedColumnNames="log_event_game_instance_id" referencedTableName="log_event_game_instance" validate="true"/>
+    </changeSet>
+    <changeSet author="Matt (generated)" id="1693252771040-21">
+        <addForeignKeyConstraint baseColumnNames="log_event_game_player_id" baseTableName="log_event_game_instance_server_messages" constraintName="FKe9k7gec6ldm55hag72vgyj93y" deferrable="false" initiallyDeferred="false" onDelete="RESTRICT" onUpdate="RESTRICT" referencedColumnNames="log_event_game_player_id" referencedTableName="log_event_game_player_server_message" validate="true"/>
+    </changeSet>
+    <changeSet author="Matt (generated)" id="1693252771040-22">
+        <addForeignKeyConstraint baseColumnNames="log_event_game_instance_id" baseTableName="log_event_game_player" constraintName="FKfyksg34dhx1lwu8s2ytwrefqb" deferrable="false" initiallyDeferred="false" onDelete="RESTRICT" onUpdate="RESTRICT" referencedColumnNames="log_event_game_instance_id" referencedTableName="log_event_game_instance" validate="true"/>
+    </changeSet>
+    <changeSet author="Matt (generated)" id="1693252771040-23">
+        <addForeignKeyConstraint baseColumnNames="log_event_game_player_id" baseTableName="log_event_game_player_server_event" constraintName="FKiqmminqqojw40rnty9dtkkhtv" deferrable="false" initiallyDeferred="false" onDelete="RESTRICT" onUpdate="RESTRICT" referencedColumnNames="log_event_game_player_id" referencedTableName="log_event_game_player" validate="true"/>
+    </changeSet>
+    <changeSet author="Matt (generated)" id="1693252771040-24">
+        <addForeignKeyConstraint baseColumnNames="log_event_game_instance_id" baseTableName="log_event_game_instance_game_player_communication_events" constraintName="FKodidblpkbp49higospfuuygxq" deferrable="false" initiallyDeferred="false" onDelete="RESTRICT" onUpdate="RESTRICT" referencedColumnNames="log_event_game_instance_id" referencedTableName="log_event_game_instance" validate="true"/>
+    </changeSet>
+    <changeSet author="Matt (generated)" id="1693252771040-25">
+        <addForeignKeyConstraint baseColumnNames="log_event_game_instance_id" baseTableName="log_event_game_instance_server_messages" constraintName="FKoplutd3640d7dq7wb3y31vn6b" deferrable="false" initiallyDeferred="false" onDelete="RESTRICT" onUpdate="RESTRICT" referencedColumnNames="log_event_game_instance_id" referencedTableName="log_event_game_instance" validate="true"/>
+    </changeSet>
+    <changeSet author="Matt (generated)" id="1693252771040-26">
+        <addForeignKeyConstraint baseColumnNames="log_event_game_instance_id" baseTableName="log_event_game_instance_client_messages" constraintName="FKppcn1x5k2ni0pwkqhqmqamg6" deferrable="false" initiallyDeferred="false" onDelete="RESTRICT" onUpdate="RESTRICT" referencedColumnNames="log_event_game_instance_id" referencedTableName="log_event_game_instance" validate="true"/>
+    </changeSet>
+    <changeSet author="Matt (generated)" id="1693252771040-27">
+        <addForeignKeyConstraint baseColumnNames="log_event_game_player_id" baseTableName="log_event_game_instance_game_player_communication_events" constraintName="FKquo2xse77qycy2frt0qpp70f4" deferrable="false" initiallyDeferred="false" onDelete="RESTRICT" onUpdate="RESTRICT" referencedColumnNames="log_event_game_player_id" referencedTableName="log_event_game_player_communication" validate="true"/>
+    </changeSet>
+    <changeSet author="Matt (generated)" id="1693252771040-28">
+        <addForeignKeyConstraint baseColumnNames="log_event_game_player_id" baseTableName="log_event_game_player_client_message" constraintName="FKspc6eyh93ednu3of7rdbb4mu8" deferrable="false" initiallyDeferred="false" onDelete="RESTRICT" onUpdate="RESTRICT" referencedColumnNames="log_event_game_player_id" referencedTableName="log_event_game_player" validate="true"/>
+    </changeSet>
+</databaseChangeLog>

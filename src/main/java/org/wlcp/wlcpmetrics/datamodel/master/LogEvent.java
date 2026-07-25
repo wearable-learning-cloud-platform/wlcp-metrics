@@ -2,16 +2,16 @@ package org.wlcp.wlcpmetrics.datamodel.master;
 
 import java.sql.Timestamp;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.EnumType;
-import javax.persistence.Enumerated;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
-import javax.persistence.Inheritance;
-import javax.persistence.InheritanceType;
-import javax.persistence.Table;
+import jakarta.persistence.Column;
+import jakarta.persistence.Entity;
+import jakarta.persistence.EnumType;
+import jakarta.persistence.Enumerated;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
+import jakarta.persistence.Id;
+import jakarta.persistence.Inheritance;
+import jakarta.persistence.InheritanceType;
+import jakarta.persistence.Table;
 
 import org.wlcp.wlcpmetrics.datamodel.enums.LogContext;
 import org.wlcp.wlcpmetrics.datamodel.enums.LogEventType;
@@ -26,6 +26,7 @@ import com.fasterxml.jackson.annotation.JsonTypeInfo;
 @JsonTypeInfo(use = JsonTypeInfo.Id.NAME, include = JsonTypeInfo.As.PROPERTY, property="logEventType", defaultImpl=LogEvent.class)
 @JsonSubTypes({
 	@Type(value = LogEventButtonPress.class, name="BUTTON_PRESS"), 
+	@Type(value = LogEventButtonPress.class, name="START_STATE"), 
 	@Type(value = LogEventState.class, name="STATE"), 
 	@Type(value = LogEventConnection.class, name="CONNECTION"), 
 	@Type(value = LogEventTransition.class, name="TRANSITION")

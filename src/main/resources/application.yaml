@@ -9,7 +9,6 @@ spring:
     change-log: classpath:liquibase/changelogs/liquibase-parent-changelog.xml
     default-schema: wlcp-metrics
   jpa:
-    database-platform: org.hibernate.dialect.MySQL5InnoDBDialect
     hibernate:
       ddl-auto: none
 server:

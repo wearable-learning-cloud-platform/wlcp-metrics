@@ -4,6 +4,8 @@ public enum LogContext {
 
 	GAME_MANAGER,
 	GAME_EDITOR,
-	GAME_PLAYER
+	GAME_PLAYER,
+	LOGIN,
+	MODE_SELECTION
 	
 }
